@@ -1,9 +1,14 @@
+<!-- This iframe doesn't rely on the templating system -->
+
 <?php
-print_unescaped($this->inc('template', ['scope' => 'launcher', 'file' => 'launcher']));
+    style('overleaf_sciebo', 'overleaf-sciebo');
+    style('overleaf_sciebo', 'launcher/launcher');
 ?>
 
-<script id="content-tpl" type="text/x-handlebars-template">
-    <div class="content-page">
-        <iframe id="overleaf-iframe" src="<?php p($_['overleaf_url'])?>" title="Overleaf" width="100%" height="100%"></iframe>
+<div id="app">
+    <div id="app-content">
+        <div id="app-content-wrapper">
+            <iframe id="overleaf-iframe" src="<?php p($_['overleaf_url'])?>" title="Overleaf"></iframe>
+        </div>
     </div>
-</script>
+</div>
