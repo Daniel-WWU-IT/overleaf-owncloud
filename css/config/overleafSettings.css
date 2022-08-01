@@ -1,0 +1,11 @@
+.settings-table * {
+    align-self: center;
+}
+.settings-table label {
+    font-weight: 600;
+}
+
+.settings-table-main {
+    display: inline-grid;
+    grid-template-columns: 100px min-content auto;
+}

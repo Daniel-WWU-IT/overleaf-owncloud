@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<info>
+    <!-- General metadata -->
+    <id>overleaf_sciebo</id>
+    <name>Overleaf Sciebo Integration</name>
+    <version>0.1.0</version>
+
+    <namespace>OverleafSciebo</namespace>
+
+    <dependencies>
+        <owncloud min-version="10" max-version="10"/>
+        <php min-version="7.4"/>
+    </dependencies>
+
+    <use-migrations>true</use-migrations>
+
+    <!-- Information metadata -->
+    <category>tools</category>
+
+    <licence>AGPL</licence>
+    <author>Daniel M&#252;ller</author>
+</info>
