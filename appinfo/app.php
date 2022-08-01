@@ -5,7 +5,7 @@ use OCA\OverleafSciebo\Util\CurrentUser;
 \OC::$server->getNavigationManager()->add(function () {
 	$urlGenerator = \OC::$server->getURLGenerator();
 	return [
-		'id' => 'overleaf_sciebo_launch',
+		'id' => 'overleaf_sciebo',
 		'name' => 'Overleaf',
 		'order' => 8,
 		'href' => $urlGenerator->linkToRoute('overleaf_sciebo.launch.launch_page'),

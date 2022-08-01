@@ -12,7 +12,7 @@
         <php min-version="7.4"/>
     </dependencies>
 
-    <use-migrations>true</use-migrations>
+    <use-migrations>false</use-migrations>
 
     <!-- Information metadata -->
     <category>tools</category>
