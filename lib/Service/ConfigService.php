@@ -29,7 +29,6 @@ class ConfigService implements JsonSerializable {
 
     public function defaults() {
         $settings = [];
-		$settings[self::SETTING_OVERLEAF_URL] = '';
         return $settings;
     }
 

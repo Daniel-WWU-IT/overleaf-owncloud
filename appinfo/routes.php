@@ -1,6 +1,13 @@
 <?php
 
 return ['routes' => [
+	// LaunchController: Pages
+	[
+		'name' => 'launch#launch_page',
+		'url' => '/launcher/launch',
+		'verb' => 'GET',
+	],
+
 	// ConfigController: API endpoints
 	[
 		'name' => 'config#get',
@@ -23,6 +30,4 @@ return ['routes' => [
 		'url' => '/config/overleaf-settings',
 		'verb' => 'GET',
 	],
-
-
 ]];

@@ -19,6 +19,7 @@ print_unescaped($this->inc('template', ['scope' => 'config', 'file' => 'overleaf
                 <div class="settings-table settings-table-main">
                     <label for="overleaf-url" style="grid-row: 1;">Overleaf URL:</label>
                     <input id="overleaf-url" type="text" style="width: 400px;" placeholder="https://www.myoverleaf.com" style="grid-row: 1;" value="<?php p($_['config']['overleaf_url'])?>"/>
+                    <div><em>Enter the URL of your Overleaf instance.</em></div>
                 </div>
             </div>
 
