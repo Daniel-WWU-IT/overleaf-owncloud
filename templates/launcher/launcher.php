@@ -11,7 +11,7 @@
     <div id="app-content">
         <div id="app-content-wrapper">
             <div id="overleaf-wrapper-loading"><i>Loading Overleaf...</i></div>
-            <iframe id="overleaf-wrapper" src="<?php p($_['overleaf_url'])?>" title="Overleaf"></iframe>
+            <iframe id="overleaf-wrapper" src="<?php p(\OC::$server->getURLGenerator()->linkToRoute("overleaf_sciebo.launch.overleaf_page")); ?>" title="Overleaf"></iframe>
         </div>
     </div>
 </div>

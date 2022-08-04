@@ -7,6 +7,11 @@ return ['routes' => [
 		'url' => '/launcher/launch',
 		'verb' => 'GET',
 	],
+	[
+		'name' => 'launch#overleaf_page',
+		'url' => '/launcher/overleaf',
+		'verb' => 'GET',
+	],
 
 	// ConfigController: API endpoints
 	[

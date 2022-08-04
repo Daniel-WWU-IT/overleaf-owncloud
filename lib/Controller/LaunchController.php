@@ -5,10 +5,7 @@ namespace OCA\OverleafSciebo\Controller;
 use OCA\OverleafSciebo\Service\OverleafService;
 
 use OCP\IRequest;
-use OCP\AppFramework\{
-	Controller,
-	Http\TemplateResponse
-};
+use OCP\AppFramework\{Controller, Http\RedirectResponse, Http\TemplateResponse};
 
 use OC\Security\CSP\ContentSecurityPolicy;
 
@@ -28,20 +25,32 @@ class LaunchController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function launchPage() {
-		$overleafURL = $this->overleafService->generateOverleafURL();
-		$host = parse_url($overleafURL, PHP_URL_HOST);
-		$data = [
-			'overleaf_url' => $overleafURL,
-		];
-		$resp = new TemplateResponse($this->appName, 'launcher/launcher', $data);
+		$host = $_SERVER['HTTP_HOST'];
+		$overleafHost = parse_url($this->overleafService->generateOverleafURL(), PHP_URL_HOST);
+
 		$csp = new ContentSecurityPolicy();
 		$csp->allowInlineScript(true);
 		$csp->addAllowedScriptDomain($host);
+		$csp->addAllowedScriptDomain($overleafHost);
 		$csp->addAllowedFrameDomain($host);
+		$csp->addAllowedFrameDomain($overleafHost);
 		$csp->addAllowedFrameDomain("blob:");
 		$csp->addAllowedChildSrcDomain($host);
+		$csp->addAllowedChildSrcDomain($overleafHost);
 		$csp->addAllowedChildSrcDomain("blob:");
+
+		$resp = new TemplateResponse($this->appName, 'launcher/launcher');
 		$resp->setContentSecurityPolicy($csp);
+		return $resp;
+	}
+
+	/**
+	 * @NoAdminRequired
+	 * @NoCSRFRequired
+	 */
+	public function overleafPage() {
+		$overleafURL = $this->overleafService->generateOverleafURL();
+		$resp = new RedirectResponse($overleafURL);
 		return $resp;
 	}
 }
