@@ -3,9 +3,14 @@
 namespace OCA\OverleafSciebo\Controller;
 
 use OCA\OverleafSciebo\Service\OverleafService;
+use OCA\OverleafSciebo\Http\HeadersParser;
 
 use OCP\IRequest;
-use OCP\AppFramework\{Controller, Http\RedirectResponse, Http\TemplateResponse};
+use OCP\AppFramework\{
+	Controller,
+	Http\RedirectResponse,
+	Http\TemplateResponse
+};
 
 use OC\Security\CSP\ContentSecurityPolicy;
 
@@ -26,7 +31,7 @@ class LaunchController extends Controller {
 	 */
 	public function launchPage() {
 		$host = $_SERVER['HTTP_HOST'];
-		$overleafHost = parse_url($this->overleafService->generateOverleafURL(), PHP_URL_HOST);
+		$overleafHost = $this->overleafService->getHost();
 
 		$csp = new ContentSecurityPolicy();
 		$csp->allowInlineScript(true);
@@ -49,8 +54,18 @@ class LaunchController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function overleafPage() {
-		$overleafURL = $this->overleafService->generateOverleafURL();
-		$resp = new RedirectResponse($overleafURL);
+		$overleafURL = $this->overleafService->generateCreateAndLoginURL();
+		$headers = HeadersParser::fromURL($overleafURL);
+
+		$resp = new RedirectResponse($this->overleafService->generateProjectsURL());
+
+		// Add any Overleaf headers to the response
+		foreach ($headers->filterHeaders('*sharelatex*') as $key => $value) {
+			$resp->addHeader($key, $value);
+		}
+
+		// TODO: Cookies... oc setzt Pfad jedoch eigenständig etc.
+
 		return $resp;
 	}
 }

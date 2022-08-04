@@ -11,7 +11,23 @@ class OverleafService {
 		$this->configService = $configService;
 	}
 
-	public function generateOverleafURL() : string {
+	public function getHost() : string {
+		$url = $this->configService->getOverleafURL();
+		if ($url == "") {
+			return "";
+		}
+		return parse_url($url, PHP_URL_HOST);
+	}
+
+	public function generateProjectsURL() : string {
+		$url = $this->configService->getOverleafURL();
+		if ($url == "") {
+			return "";
+		}
+		return rtrim($url, '/') . "/project";
+	}
+
+	public function generateCreateAndLoginURL() : string {
 		$url = $this->configService->getOverleafURL();
 		if ($url == "") {
 			return "";
