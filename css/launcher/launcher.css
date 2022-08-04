@@ -1,6 +1,18 @@
-iframe {
+#overleaf-wrapper {
     display: block;
     border: none;
     width: 100%;
     height: 90vh;
+}
+
+#overleaf-wrapper-loading {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 110%;
+    font-weight: bold;
+    padding: 10px;
+    margin: 15px;
+    background: #eee;
+    border: #eee solid;
+    border-radius: 5px;
 }
