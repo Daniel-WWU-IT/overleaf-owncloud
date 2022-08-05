@@ -56,6 +56,8 @@ class LaunchController extends Controller {
 		$overleafURL = $this->overleafService->generateCreateAndLoginURL();
 		/* TODO:
 			1) create-and-login muss alle Daten als JSON liefern, die zum Bauen der Redirect Response nötig sind (Headers&Cookies)
+				- Die Daten dabei verschlüsseln mit Key, den nur OL kennt (+b64)
+				- Daten können 1:1 bei Redirect-Anfrage mitgeschickt und von OL wieder entschlüsselt werden
 			2) Neuer EP in OL für Redirect/Login mit Headers&Cookies
 				- Statt Email&Password werden direkt die Headers&Cookies verwendet
 				- Eigentlicher Redirect wird so dennoch vom OL Service durchgeführt
