@@ -9,6 +9,7 @@ use OCP\IConfig;
 
 class ConfigService implements JsonSerializable {
 	const SETTING_OVERLEAF_URL = 'overleaf_url';
+	const SETTING_API_KEY = 'api_key';
 
 	private string $appName;
     private IConfig $config;
@@ -49,11 +50,16 @@ class ConfigService implements JsonSerializable {
     private function getKeys() {
         return [
 			self::SETTING_OVERLEAF_URL,
+	        self::SETTING_API_KEY,
         ];
     }
 
 	public function getOverleafURL() {
 		return $this->settings[self::SETTING_OVERLEAF_URL];
+	}
+
+	public function getAPIKey() {
+		return $this->settings[self::SETTING_API_KEY];
 	}
 
 	public function config() : IConfig {

@@ -20,6 +20,10 @@ print_unescaped($this->inc('template', ['scope' => 'config', 'file' => 'overleaf
                     <label for="overleaf-url" style="grid-row: 1;">Overleaf URL:</label>
                     <input id="overleaf-url" type="text" style="width: 400px;" placeholder="https://www.myoverleaf.com" style="grid-row: 1;" value="<?php p($_['config']['overleaf_url'])?>"/>
                     <div><em>Enter the URL of your Overleaf instance.</em></div>
+
+                    <label for="api-key" style="grid-row: 2;">API Key:</label>
+                    <input id="api-key" type="text" style="width: 400px;" placeholder="secret-key-1234" style="grid-row: 2;" value="<?php p($_['config']['api_key'])?>"/>
+                    <div><em>Enter the key used to authenticate against the Overleaf API.</em></div>
                 </div>
             </div>
 

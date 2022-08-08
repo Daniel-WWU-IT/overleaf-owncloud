@@ -35,11 +35,13 @@
         _getSettings() {
             return {
                 overleaf_url: $('#overleaf-url').val().trim(),
+                api_key: $('#api-key').val().trim(),
             };
         }
 
         _setSettings(settings) {
             $('#overleaf-url').val(settings.overleaf_url);
+            $('#api-key').val(settings.api_key);
         }
 
         _enableForm(enable = true) {

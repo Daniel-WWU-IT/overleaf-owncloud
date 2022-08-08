@@ -47,6 +47,7 @@ class OverleafService {
 		// Build the URL and redirect to it
 		$params = http_build_query([
 			'action' => 'create-and-login',
+			'apikey' => $this->configService->getAPIKey(),
 			'email' => $this->normalizeUserID($user->getUID()),
 			'password' => $this->generatePassword(),
 		]);
