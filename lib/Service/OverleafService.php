@@ -19,12 +19,18 @@ class OverleafService {
 		return parse_url($url, PHP_URL_HOST);
 	}
 
-	public function generateProjectsURL() : string {
+	public function generateProjectsURL($userData) : string {
 		$url = $this->configService->getOverleafURL();
 		if ($url == "") {
 			return "";
 		}
-		return rtrim($url, '/') . "/project";
+
+		// Build the URL and redirect to it
+		$params = http_build_query([
+			'action' => 'open-projects',
+			'data' => $userData,
+		]);
+		return rtrim($url, '/') . "/regsvc?{$params}";
 	}
 
 	public function generateCreateAndLoginURL() : string {
@@ -32,6 +38,7 @@ class OverleafService {
 		if ($url == "") {
 			return "";
 		}
+
 		$user = CurrentUser::get();
 		if ($user == null) {
 			return "";
