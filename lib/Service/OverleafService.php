@@ -60,7 +60,12 @@ class OverleafService {
 			return $uid;
 		} else {
 			$uid = str_replace('@', '-', $uid);
-			$host = parse_url($this->configService->getOverleafURL(), PHP_URL_HOST);
+			$url = $_SERVER['HTTP_HOST'];
+			if (!filter_var($url, FILTER_VALIDATE_URL)) {
+				// Fall back to the Overleaf URL if everything else fails
+				$url = $this->configService->getOverleafURL();
+			}
+			$host = parse_url($url, PHP_URL_HOST);
 			return $uid . '@' . $host;
 		}
 	}
