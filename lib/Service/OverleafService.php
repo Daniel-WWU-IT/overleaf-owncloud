@@ -58,7 +58,7 @@ class OverleafService {
 		// We need a valid email address
 		if (filter_var($uid, FILTER_VALIDATE_EMAIL)) {
 			if ($this->configService->getEnforceUserIDSuffix()) {
-				$uid = strstr($uid, '@', true);
+				$uid = str_replace(['@', '.'], '-', $uid);
 			} else {
 				return $uid;
 			}
