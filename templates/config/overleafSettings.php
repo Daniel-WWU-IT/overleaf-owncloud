@@ -27,8 +27,28 @@ print_unescaped($this->inc('template', ['scope' => 'config', 'file' => 'overleaf
                 </div>
             </div>
 
-            <div style="grid-row: 2;">&nbsp;</div>
-            <div style="grid-row: 3;">
+            <div id="userid-settings-section" style="grid-row: 2;">
+                <div class="section-header">
+                    <h3>User IDs</h3>
+                </div>
+                <div>Configure how the Overleaf user IDs, which must be in a valid email address format, are generated.</div>
+                <div>&nbsp;</div>
+
+                <div class="settings-table settings-table-userid">
+                    <label for="userid-suffix" style="grid-row: 1;">Suffix:</label>
+                    <input id="userid-suffix" type="text" style="width: 400px;" placeholder="myoverleaf.com" style="grid-row: 1;" value="<?php p($_['config']['userid_suffix'])?>"/>
+                    <div><em>Overleaf user IDs will be generated in the form of <i>owncloud-id@suffix</i>. It should thus be in the form of <i>host.tld</i>, like <i>myoverleaf.com</i>.</em></div>
+
+                    <span style="grid-row: 2; grid-column: 2;">
+                        <input id="userid-suffix-enforce" type="checkbox" <?php p($_['config']['userid_suffix_enforce'] ? 'checked' : ''); ?>/>
+                        <label for="userid-suffix-enforce">Enforce suffix</label>
+                    </span>
+                    <div style="grid-column: 3;"><em>If enabled, ownCloud user IDs which already are an email address will nonetheless use the specified suffix.</em></div>
+                </div>
+            </div>
+
+            <div style="grid-row: 3;">&nbsp;</div>
+            <div style="grid-row: 4;">
                 <button id="settings-save">Save settings</button>
             </div>
         </form>

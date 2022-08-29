@@ -36,12 +36,16 @@
             return {
                 overleaf_url: $('#overleaf-url').val().trim(),
                 api_key: $('#api-key').val().trim(),
+                userid_suffix: $('#userid-suffix').val().trim(),
+                userid_suffix_enforce: $('#userid-suffix-enforce').prop('checked')
             };
         }
 
         _setSettings(settings) {
             $('#overleaf-url').val(settings.overleaf_url);
             $('#api-key').val(settings.api_key);
+            $('#userid-suffix').val(settings.userid_suffix);
+            $('#userid-suffix-enforce').prop('checked', settings.userid_suffix_enforce);
         }
 
         _enableForm(enable = true) {

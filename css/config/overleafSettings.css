@@ -9,3 +9,7 @@
     display: inline-grid;
     grid-template-columns: 150px min-content auto;
 }
+.settings-table-userid {
+    display: inline-grid;
+    grid-template-columns: 150px min-content auto;
+}

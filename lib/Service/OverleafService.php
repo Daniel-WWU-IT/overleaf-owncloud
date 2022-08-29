@@ -57,17 +57,18 @@ class OverleafService {
 	private function normalizeUserID($uid) {
 		// We need a valid email address
 		if (filter_var($uid, FILTER_VALIDATE_EMAIL)) {
-			return $uid;
-		} else {
-			$uid = str_replace('@', '-', $uid);
-			$url = $_SERVER['HTTP_HOST'];
-			if (!filter_var($url, FILTER_VALIDATE_URL)) {
-				// Fall back to the Overleaf URL if everything else fails
-				$url = $this->configService->getOverleafURL();
+			if ($this->configService->getEnforceUserIDSuffix()) {
+				$uid = strstr($uid, '@', true);
+			} else {
+				return $uid;
 			}
-			$host = parse_url($url, PHP_URL_HOST);
-			return $uid . '@' . $host;
 		}
+		$uid = str_replace('@', '-', $uid);
+		$host = $this->configService->getUserIDSuffix();
+		if ($host == "") {
+			$host = parse_url($this->configService->getOverleafURL(), PHP_URL_HOST);
+		}
+		return $uid . '@' . $host;
 	}
 
 	private function generatePassword(int $length = 64) {
