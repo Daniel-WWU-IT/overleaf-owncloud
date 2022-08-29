@@ -3,7 +3,7 @@
     <!-- General metadata -->
     <id>overleaf_sciebo</id>
     <name>Overleaf Sciebo Integration</name>
-    <version>0.1.0</version>
+    <version>1.0.0</version>
 
     <namespace>OverleafSciebo</namespace>
 
