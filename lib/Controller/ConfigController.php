@@ -1,10 +1,10 @@
 <?php
 
-namespace OCA\OverleafSciebo\Controller;
+namespace OCA\Overleaf\Controller;
 
 use Exception;
 
-use OCA\OverleafSciebo\Service\ConfigService;
+use OCA\Overleaf\Service\ConfigService;
 
 use OCP\IRequest;
 use OCP\AppFramework\{

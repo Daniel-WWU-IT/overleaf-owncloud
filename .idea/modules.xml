@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/overleaf-sciebo.iml" filepath="$PROJECT_DIR$/.idea/overleaf-sciebo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/overleaf-owncloud.iml" filepath="$PROJECT_DIR$/.idea/overleaf-owncloud.iml" />
     </modules>
   </component>
 </project>

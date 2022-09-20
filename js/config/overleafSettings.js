@@ -63,7 +63,7 @@
     }
 
     $(document).ready(function () {
-        let handler = new SettingsHandler(OC.generateUrl('/apps/overleaf_sciebo/config'));
+        let handler = new SettingsHandler(OC.generateUrl('/apps/overleaf_owncloud/config'));
 
         let view = new SnapshotSettingsView(handler);
         view.render();

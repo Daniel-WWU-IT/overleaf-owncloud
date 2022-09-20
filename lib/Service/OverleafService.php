@@ -1,8 +1,8 @@
 <?php
 
-namespace OCA\OverleafSciebo\Service;
+namespace OCA\Overleaf\Service;
 
-use OCA\OverleafSciebo\Util\CurrentUser;
+use OCA\Overleaf\Util\CurrentUser;
 
 class OverleafService {
 	private ConfigService $configService;

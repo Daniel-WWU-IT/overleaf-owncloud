@@ -6,24 +6,24 @@
 
     function _initTemplate($scope, $file) {
         // Styles
-        style('overleaf_sciebo', 'overleaf-sciebo');
+        style('overleaf_owncloud', 'overleaf-owncloud');
 
-        style('overleaf_sciebo', $scope . '/' . $file);
+        style('overleaf_owncloud', $scope . '/' . $file);
 
         // Scripts
-        script('overleaf_sciebo', 'lib/3rdparty/handlebars');
-        script('overleaf_sciebo', 'lib/3rdparty/js.cookie');
+        script('overleaf_owncloud', 'lib/3rdparty/handlebars');
+        script('overleaf_owncloud', 'lib/3rdparty/js.cookie');
 
-        script('overleaf_sciebo', 'lib/handler/handler');
-        script('overleaf_sciebo', 'lib/handler/config/settingsHandler');
-        script('overleaf_sciebo', 'lib/ui/ui');
-        script('overleaf_sciebo', 'lib/ui/template/template');
-        script('overleaf_sciebo', 'lib/ui/template/helpers');
-        script('overleaf_sciebo', 'lib/ui/template/partials');
-        script('overleaf_sciebo', 'lib/ui/view/view');
-	    script('overleaf_sciebo', 'lib/util/utils');
+        script('overleaf_owncloud', 'lib/handler/handler');
+        script('overleaf_owncloud', 'lib/handler/config/settingsHandler');
+        script('overleaf_owncloud', 'lib/ui/ui');
+        script('overleaf_owncloud', 'lib/ui/template/template');
+        script('overleaf_owncloud', 'lib/ui/template/helpers');
+        script('overleaf_owncloud', 'lib/ui/template/partials');
+        script('overleaf_owncloud', 'lib/ui/view/view');
+	    script('overleaf_owncloud', 'lib/util/utils');
 
-        script('overleaf_sciebo', $scope . '/' . $file);
+        script('overleaf_owncloud', $scope . '/' . $file);
     }
 
     _initTemplate($_['scope'], $_['file']);
@@ -38,7 +38,7 @@
                 <div id="global-message" class="message message-info" style="display: none;">
                     <div id="global-message-header" class="message-header">Message topic</div>
                     <div id="global-message-text" class="message-text">Message text</div>
-                    <div id="global-message-close" class="message-close"><a id="global-message-close-x"><img src="<?php print_unescaped(image_path('overleaf_sciebo', 'icons/close.svg')); ?>" width="20px"/></a></div>
+                    <div id="global-message-close" class="message-close"><a id="global-message-close-x"><img src="<?php print_unescaped(image_path('overleaf_owncloud', 'icons/close.svg')); ?>" width="20px"/></a></div>
                 </div>
 
                 <!-- Main content -->

@@ -1,8 +1,8 @@
 <?php
 
-namespace OCA\OverleafSciebo\Controller;
+namespace OCA\Overleaf\Controller;
 
-use OCA\OverleafSciebo\Service\OverleafService;
+use OCA\Overleaf\Service\OverleafService;
 
 use OCP\IRequest;
 use OCP\AppFramework\{

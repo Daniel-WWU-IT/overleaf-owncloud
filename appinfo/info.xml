@@ -1,11 +1,11 @@
 <?xml version="1.0"?>
 <info>
     <!-- General metadata -->
-    <id>overleaf_sciebo</id>
-    <name>Overleaf Sciebo Integration</name>
+    <id>overleaf_owncloud</id>
+    <name>Overleaf ownCloud Integration</name>
     <version>1.0.0</version>
 
-    <namespace>OverleafSciebo</namespace>
+    <namespace>Overleaf</namespace>
 
     <dependencies>
         <owncloud min-version="10" max-version="10"/>

@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\OverleafSciebo\Util;
+namespace OCA\Overleaf\Util;
 
 class CurrentUser {
 	static public function get() {

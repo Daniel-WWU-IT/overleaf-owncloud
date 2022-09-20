@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\OverleafSciebo\Service;
+namespace OCA\Overleaf\Service;
 
 use Exception;
 use JsonSerializable;
