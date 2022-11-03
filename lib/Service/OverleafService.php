@@ -54,6 +54,21 @@ class OverleafService {
 		return rtrim($url, '/') . "/regsvc?{$params}";
 	}
 
+	public function generateDeleteUserURL($user) : string {
+		$url = $this->configService->getOverleafURL();
+		if ($url == "") {
+			return "";
+		}
+
+		// Build the URL and redirect to it
+		$params = http_build_query([
+			'action' => 'delete',
+			'apikey' => $this->configService->getAPIKey(),
+			'email' => $this->normalizeUserID($user->getUID()),
+		]);
+		return rtrim($url, '/') . "/regsvc?{$params}";
+	}
+
 	private function normalizeUserID($uid) {
 		// We need a valid email address
 		if (filter_var($uid, FILTER_VALIDATE_EMAIL)) {

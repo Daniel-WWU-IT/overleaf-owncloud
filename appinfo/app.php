@@ -25,3 +25,5 @@ if (CurrentUser::isAdmin()) {
 		];
 	});
 }
+
+\OC::$server->query('OCA\Overleaf\Hooks\UserHooks')->register();
