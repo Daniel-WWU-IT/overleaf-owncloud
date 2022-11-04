@@ -19,7 +19,7 @@ class ConfigService implements JsonSerializable {
     private array $settings;
 
     public function __construct($AppName, IConfig $config) {
-		$this->appName = $AppName;
+		$this->appName = 'overleaf_owncloud'; // Hardcoded since ownCloud sometimes passes an invalid name here
         $this->config = $config;
         $this->settings = $this->defaults();
 
@@ -32,6 +32,9 @@ class ConfigService implements JsonSerializable {
 
     public function defaults() {
         $settings = [];
+	    foreach ($this->getKeys() as $key) {
+			$settings[$key] = "";
+	    }
         return $settings;
     }
 

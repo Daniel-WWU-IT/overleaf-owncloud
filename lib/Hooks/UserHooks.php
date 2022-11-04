@@ -9,7 +9,7 @@ class UserHooks {
 	private IUserManager $userManager;
 	private OverleafService $overleafService;
 
-	public function __construct(IUserManager $userManager, OverleafService $overleafService) {
+	public function __construct($AppName, IUserManager $userManager, OverleafService $overleafService) {
 		$this->userManager = $userManager;
 		$this->overleafService = $overleafService;
 	}
@@ -20,6 +20,6 @@ class UserHooks {
 
 	private function onPostDeleteUser($user) {
 		$url = $this->overleafService->generateDeleteUserURL($user);
-		file_put_contents('/var/www/owncloud/data/wegisser.txt', $url . "\n");
+		file_get_contents($url);
 	}
 }
