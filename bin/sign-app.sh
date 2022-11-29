@@ -13,9 +13,6 @@ sudo -u www-data /var/www/owncloud/occ integrity:sign-app \
     --path=/tmp/overleaf-owncloud/
 sudo chmod 0555 ./appinfo/signature.json
 
-cd ..
-mv overleaf-owncloud overleaf_owncloud
-tar -czf overleaf_owncloud.tar.gz overleaf_owncloud
-mv overleaf_owncloud.tar.gz /proj/Overleaf/overleaf-owncloud/
+cp -f ./appinfo/signature.json /proj/Overleaf/overleaf-owncloud/appinfo/
 rm -rf /tmp/overleaf_owncloud/
 
