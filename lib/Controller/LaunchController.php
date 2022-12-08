@@ -43,7 +43,7 @@ class LaunchController extends Controller {
 		$csp->addAllowedChildSrcDomain($overleafHost);
 		$csp->addAllowedChildSrcDomain("blob:");
 
-		$resp = new TemplateResponse($this->appName, 'launcher/launcher');
+		$resp = new TemplateResponse($this->appName, 'launcher/launcher', ['overleaf-origin' => $overleafHost]);
 		$resp->setContentSecurityPolicy($csp);
 		return $resp;
 	}

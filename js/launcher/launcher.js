@@ -8,12 +8,33 @@
             $('#overleaf-wrapper-loading').hide();
         });
 
-        $(window).on('resize', () => {
+        // Some window event listeners
+        $(window).on('message', (msg) => {
+            _handleMessageEvent(msg.originalEvent);
+        }).on('resize', () => {
             _updateWrapperHeight();
         });
 
         _updateWrapperHeight();
     });
+
+    function _handleMessageEvent(event) {
+        // Check if the redirect came from the correct Overleaf instance
+        let url = new URL(event.origin);
+        let origin = $('#overleaf-wrapper').attr('x-origin');
+        if (url.hostname.toLowerCase() !== origin.toLowerCase()) {
+            console.log("Message received from invalid source");
+            return;
+        }
+
+        // Handle the event
+        switch (event.data) {
+            case 'login-page-displayed': // The login page was displayed, so automatically perform a relogin
+                // TODO: Reload entire app => Relogin
+                console.log("BREAK FREEEEE");
+                break;
+        }
+    }
 
     function _updateWrapperHeight() {
         let winHeight = $(window).height();
