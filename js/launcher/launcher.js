@@ -30,8 +30,8 @@
         // Handle the event
         switch (event.data) {
             case 'login-page-displayed': // The login page was displayed, so automatically perform a relogin
-                // TODO: Reload entire app => Relogin
-                console.log("BREAK FREEEEE");
+                let addr = location.href;
+                location.href = addr;
                 break;
         }
     }
