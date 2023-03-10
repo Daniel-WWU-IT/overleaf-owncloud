@@ -3,7 +3,7 @@
     <!-- General metadata -->
     <id>overleaf_owncloud</id>
     <name>Overleaf ownCloud Integration</name>
-    <version>1.0.5</version>
+    <version>1.0.6</version>
 
     <namespace>Overleaf</namespace>
 

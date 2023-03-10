@@ -5,6 +5,7 @@ namespace OCA\Overleaf\Service;
 use Exception;
 use JsonSerializable;
 
+use OCP\AppFramework\Http\Response;
 use OCP\IConfig;
 
 class ConfigService implements JsonSerializable {

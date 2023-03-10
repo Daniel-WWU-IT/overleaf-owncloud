@@ -47,9 +47,7 @@ class OverleafService {
 		// Build the URL and redirect to it
 		$params = http_build_query([
 			'action' => 'create-and-login',
-			'apikey' => $this->configService->getAPIKey(),
 			'email' => $this->normalizeUserID($user->getUID()),
-			'password' => $this->generatePassword(),
 		]);
 		return rtrim($url, '/') . "/regsvc?{$params}";
 	}
@@ -63,11 +61,20 @@ class OverleafService {
 		// Build the URL and redirect to it
 		$params = http_build_query([
 			'action' => 'delete',
-			'apikey' => $this->configService->getAPIKey(),
 			'email' => $this->normalizeUserID($user->getUID()),
 		]);
 		return rtrim($url, '/') . "/regsvc?{$params}";
 	}
+
+    public function generatePassword(int $length = 64) {
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
+        $randomString = '';
+        for ($i = 0; $i < $length; $i++) {
+            $index = rand(0, strlen($characters) - 1);
+            $randomString .= $characters[$index];
+        }
+        return $randomString;
+    }
 
 	private function normalizeUserID($uid) {
 		// We need a valid email address
@@ -84,15 +91,5 @@ class OverleafService {
 			$host = parse_url($this->configService->getOverleafURL(), PHP_URL_HOST);
 		}
 		return $uid . '@' . $host;
-	}
-
-	private function generatePassword(int $length = 64) {
-		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_-';
-		$randomString = '';
-		for ($i = 0; $i < $length; $i++) {
-			$index = rand(0, strlen($characters) - 1);
-			$randomString .= $characters[$index];
-		}
-		return $randomString;
 	}
 }

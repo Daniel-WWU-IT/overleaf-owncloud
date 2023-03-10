@@ -2,24 +2,24 @@
 
 namespace OCA\Overleaf\Controller;
 
+use OCA\Overleaf\Service\ConfigService;
 use OCA\Overleaf\Service\OverleafService;
 
+use OCA\Overleaf\Util\Requests;
 use OCP\IRequest;
-use OCP\AppFramework\{
-	Controller,
-	Http\RedirectResponse,
-	Http\TemplateResponse
-};
+use OCP\AppFramework\{Controller, Http\RedirectResponse, Http\TemplateResponse};
 
 use OC\Security\CSP\ContentSecurityPolicy;
 
 class LaunchController extends Controller {
 	private OverleafService $overleafService;
+    private ConfigService $configService;
 
-	public function __construct($AppName, IRequest $request, OverleafService $overleafService) {
+	public function __construct($AppName, IRequest $request, OverleafService $overleafService, ConfigService $configService) {
 		parent::__construct($AppName, $request);
 
 		$this->overleafService = $overleafService;
+        $this->configService = $configService;
 	}
 
 	/*** Page endpoints ***/
@@ -55,7 +55,10 @@ class LaunchController extends Controller {
 	public function overleafPage() {
 		// Create and login the user, and use the provided data to redirect to the projects page
 		$overleafURL = $this->overleafService->generateCreateAndLoginURL();
-		$data = file_get_contents($overleafURL);
-		return new RedirectResponse($this->overleafService->generateProjectsURL($data));
+        $password = $this->overleafService->generatePassword();
+        $data = Requests::getProtectedContents($overleafURL, $this->configService, [Requests::HEADER_PASSWORD => $password]);
+
+        $resp = new RedirectResponse($this->overleafService->generateProjectsURL($data));
+		return $resp;
 	}
 }
