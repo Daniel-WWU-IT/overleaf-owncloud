@@ -30,7 +30,7 @@
 ?>
 
 <!-- Basic content template -->
-<div id="app">
+<div id="app" style="background-color: #2c3645;">
     <div id="app-content">
         <div id="app-content-wrapper">
             <div class="section">
