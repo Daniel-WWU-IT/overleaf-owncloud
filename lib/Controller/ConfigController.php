@@ -25,10 +25,16 @@ class ConfigController extends Controller {
 
     /*** API endpoints ***/
 
+    /**
+     * @NoCSRFRequired
+     */
     public function get() {
         return new DataResponse($this->configService->jsonSerialize());
     }
 
+    /**
+     * @NoCSRFRequired
+     */
     public function getDefaults() {
         return new DataResponse($this->configService->defaults());
     }
@@ -45,6 +51,9 @@ class ConfigController extends Controller {
 
     /*** Page endpoints ***/
 
+    /**
+     * @NoCSRFRequired
+     */
     public function overleafSettingsPage() {
         $data = [
             'config' => $this->configService->jsonSerialize(),
