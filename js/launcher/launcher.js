@@ -6,6 +6,7 @@
     $(document).ready(function () {
         $('#overleaf-wrapper').on('load', () => {
             $('#overleaf-wrapper-loading').hide();
+            $('#app').css('background-color', '#2c3645');
         });
 
         // Some window event listeners
